@@ -8,4 +8,7 @@ const requireSignin = passport.authenticate('local', { session: false })
 module.exports = function(app) {
   app.post('/auth/signin', requireSignin, Authentication.signin)
   app.post('/auth/signup', Authentication.signup)
+  app.get('/myfakelist', requireAuth, (req, response) => {
+    response.send("My fake list")
+  })
 }
